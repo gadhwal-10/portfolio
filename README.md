@@ -11,11 +11,10 @@ This portfolio showcases my work, internships, projects, and contact details.
 e.g. https://aryangadhwal.vercel.app
 
 ## Tech Stack
-
-- HTML  
-- CSS  
-- JavaScript  
-- Three.js (Experience Canvas)  
+  
+- JavaScript
+- React 
+- Three.js 
 - Vite  
 
 ## Getting Started
