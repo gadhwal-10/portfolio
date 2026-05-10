@@ -12,17 +12,43 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+  <!-- Minimalist Signature Preloader -->
+  <div class="sig-preloader" id="sigPreloader">
+    <div class="sig-preloader-inner">
+      <canvas id="sigCanvas"></canvas>
+      <div class="sig-underline"></div>
+    </div>
+  </div>
+
+  <!-- Galaxy Canvas Background (fixed, full-page) -->
+  <canvas id="galaxyCanvas"></canvas>
+
+  <!-- Deity Scroll Overlays (cinematic) -->
+  <div class="deity-scroll-layer" id="deityShiva">
+    <div class="deity-figure shiva-figure"></div>
+  </div>
+  <div class="deity-scroll-layer" id="deityKrishna">
+    <div class="deity-figure krishna-figure"></div>
+  </div>
+  <div class="deity-scroll-layer" id="deityVishnu">
+    <div class="deity-figure vishnu-figure"></div>
+  </div>
 
   <!-- Custom Cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Floating Decorative Orbs -->
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  <div class="floating-orb orb-3"></div>
 
   <!-- Floating Social Sidebar -->
   <div class="social-sidebar" id="socialSidebar">
@@ -58,12 +84,11 @@
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <canvas id="particles-canvas"></canvas>
       <div class="hero-gradient"></div>
     </div>
-    <div class="hero-content">
+    <div class="hero-content" data-parallax data-speed="0.3">
       <span class="hero-greeting">// Hello, World!</span>
-      <h1 class="hero-name">I'm <span class="highlight">Aryan Gadhwal</span></h1>
+      <h1 class="hero-name">I'm <span class="highlight shimmer-text">Aryan Gadhwal</span></h1>
       <div class="typing-wrapper">
         <span class="typing-prefix">&gt;</span>
         <span class="typing-text" id="typingText"></span>
@@ -79,21 +104,21 @@
       </div>
     </div>
     <div class="scroll-indicator">
-      <span>Scroll</span>
+      <span>Begin the Journey</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
   <!-- About Section -->
   <section class="section" id="about">
-    <div class="section-header reveal">
+    <div class="section-header reveal" data-parallax data-speed="0.15">
       <span class="section-label">// Who am I</span>
-      <h2 class="section-title">About <span class="accent">Me</span></h2>
+      <h2 class="section-title">About <span class="accent shimmer-text">Me</span></h2>
       <div class="section-line"></div>
     </div>
 
     <div class="about-grid">
-      <div class="about-visual reveal-left">
+      <div class="about-visual reveal-left" data-parallax data-speed="0.2">
         <div class="about-image-frame">
           <img src="profile.png" alt="Aryan Gadhwal" class="profile-img">
         </div>
@@ -115,7 +140,7 @@
         </div>
       </div>
 
-      <div class="about-content reveal-right">
+      <div class="about-content reveal-right" data-parallax data-speed="0.1">
         <h3>Building Scalable & Meaningful Digital Products</h3>
 
         <p>
@@ -150,15 +175,15 @@
 
   <!-- Projects Section -->
   <section class="section" id="projects">
-    <div class="section-header reveal">
+    <div class="section-header reveal" data-parallax data-speed="0.15">
       <span class="section-label">// What I've built</span>
-      <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+      <h2 class="section-title">Featured <span class="accent shimmer-text">Projects</span></h2>
       <div class="section-line"></div>
     </div>
     <div class="projects-container">
 
       <!-- FinScope -->
-      <div class="project-card reveal">
+      <div class="project-card reveal" data-parallax data-speed="0.08">
         <div class="project-info">
           <span class="project-featured-tag">⭐ Featured Project</span>
           <h3>FinScope</h3>
@@ -191,7 +216,7 @@
       </div>
 
       <!-- Project 2 -->
-      <div class="project-card reveal">
+      <div class="project-card reveal" data-parallax data-speed="0.05">
         <div class="project-info">
           <h3>cricKart</h3>
           <p>CrickArt is a cricket-based web platform that provides match insights, player statistics, and interactive
@@ -224,60 +249,66 @@
 
   <!-- Skills Section -->
   <section class="section" id="skills">
-    <div class="section-header reveal">
+    <div class="section-header reveal" data-parallax data-speed="0.15">
       <span class="section-label">// What I know</span>
-      <h2 class="section-title">Skills & <span class="accent">Technologies</span></h2>
+      <h2 class="section-title">Skills & <span class="accent shimmer-text">Technologies</span></h2>
       <div class="section-line"></div>
     </div>
     <div class="skills-container">
       <div class="skills-categories">
 
-        <div class="skill-category reveal">
+        <div class="skill-category glass-card reveal" data-tilt>
+          <div class="glass-shine"></div>
+          <div class="glass-border-glow"></div>
           <div class="skill-category-header">
             <div class="skill-category-icon">⚡</div>
             <h3 class="skill-category-title">Frontend</h3>
           </div>
           <div class="skill-list">
-            <span class="skill-item">React.js</span>
-            <span class="skill-item">Next.js</span>
-            <span class="skill-item">JavaScript</span>
-            <span class="skill-item">TypeScript</span>
-            <span class="skill-item">HTML5</span>
-            <span class="skill-item">CSS3</span>
-            <span class="skill-item">Tailwind CSS</span>
-            <span class="skill-item">Redux</span>
+            <span class="skill-item" data-magnetic>React.js</span>
+            <span class="skill-item" data-magnetic>Next.js</span>
+            <span class="skill-item" data-magnetic>JavaScript</span>
+            <span class="skill-item" data-magnetic>TypeScript</span>
+            <span class="skill-item" data-magnetic>HTML5</span>
+            <span class="skill-item" data-magnetic>CSS3</span>
+            <span class="skill-item" data-magnetic>Tailwind CSS</span>
+            <span class="skill-item" data-magnetic>Redux</span>
           </div>
         </div>
 
-        <div class="skill-category reveal">
+        <div class="skill-category glass-card reveal" data-tilt>
+          <div class="glass-shine"></div>
+          <div class="glass-border-glow"></div>
           <div class="skill-category-header">
             <div class="skill-category-icon">🛠</div>
             <h3 class="skill-category-title">Backend</h3>
           </div>
           <div class="skill-list">
-            <span class="skill-item">Node.js</span>
-            <span class="skill-item">Express.js</span>
-            <span class="skill-item">MongoDB</span>
-            <span class="skill-item">PostgreSQL</span>
-            <span class="skill-item">REST APIs</span>
-            <span class="skill-item">Supabase</span>
-            <span class="skill-item">Prisma</span>
+            <span class="skill-item" data-magnetic>Node.js</span>
+            <span class="skill-item" data-magnetic>Express.js</span>
+            <span class="skill-item" data-magnetic>MongoDB</span>
+            <span class="skill-item" data-magnetic>PostgreSQL</span>
+            <span class="skill-item" data-magnetic>REST APIs</span>
+            <span class="skill-item" data-magnetic>Supabase</span>
+            <span class="skill-item" data-magnetic>Prisma</span>
           </div>
         </div>
 
-        <div class="skill-category reveal">
+        <div class="skill-category glass-card reveal" data-tilt>
+          <div class="glass-shine"></div>
+          <div class="glass-border-glow"></div>
           <div class="skill-category-header">
             <div class="skill-category-icon">🚀</div>
             <h3 class="skill-category-title">Tools & DevOps</h3>
           </div>
           <div class="skill-list">
-            <span class="skill-item">Git & GitHub</span>
-            <span class="skill-item">MongoDB Compass</span>
-            <span class="skill-item">Vercel</span>
-            <span class="skill-item">MongoDB Atlas</span>
-            <span class="skill-item">Firebase</span>
-            <span class="skill-item">VS Code</span>
-            <span class="skill-item">Postman</span>
+            <span class="skill-item" data-magnetic>Git & GitHub</span>
+            <span class="skill-item" data-magnetic>MongoDB Compass</span>
+            <span class="skill-item" data-magnetic>Vercel</span>
+            <span class="skill-item" data-magnetic>MongoDB Atlas</span>
+            <span class="skill-item" data-magnetic>Firebase</span>
+            <span class="skill-item" data-magnetic>VS Code</span>
+            <span class="skill-item" data-magnetic>Postman</span>
           </div>
         </div>
 
@@ -287,15 +318,15 @@
 
   <!-- Experience Section -->
   <section class="section" id="experience">
-    <div class="section-header reveal">
+    <div class="section-header reveal" data-parallax data-speed="0.15">
       <span class="section-label">// Where I've worked</span>
-      <h2 class="section-title">Experience & <span class="accent">Journey</span></h2>
+      <h2 class="section-title">Experience & <span class="accent shimmer-text">Journey</span></h2>
       <div class="section-line"></div>
     </div>
     <div class="experience-container">
       <div class="timeline">
 
-        <div class="timeline-item reveal">
+        <div class="timeline-item reveal" data-parallax data-speed="0.06">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="timeline-date">June 2025 — August 2025</span>
@@ -313,7 +344,7 @@
           </div>
         </div>
 
-        <div class="timeline-item reveal">
+        <div class="timeline-item reveal" data-parallax data-speed="0.04">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="timeline-date">May 2025 — June 2025</span>
@@ -336,7 +367,7 @@
     <div class="connect-glow"></div>
     <div class="connect-content reveal">
       <span class="section-label">// Let's connect</span>
-      <h2>Got an idea? <span class="accent">Let's talk.</span></h2>
+      <h2>Got an idea? <span class="accent shimmer-text">Let's talk.</span></h2>
       <p class="connect-subtitle">I'm always open to discussing new projects, creative ideas, or opportunities to be
         part of something amazing.</p>
       <div class="social-links">
