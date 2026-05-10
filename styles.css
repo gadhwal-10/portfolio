@@ -246,3 +246,135 @@ img{max-width:100%;display:block}
   .hero-cta .btn-primary,.hero-cta .btn-outline{width:100%;text-align:center}
   .about-floating-card{display:none}
 }
+
+/* ===== GALAXY CANVAS ===== */
+#galaxyCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+/* ===== FLOATING ORBS ===== */
+.floating-orb{position:fixed;border-radius:50%;pointer-events:none;z-index:-1;filter:blur(80px);opacity:.3;animation:orbFloat 20s ease-in-out infinite}
+.orb-1{width:400px;height:400px;background:radial-gradient(circle,rgba(0,119,212,.4),transparent);top:10%;left:-5%;animation-delay:0s}
+.orb-2{width:350px;height:350px;background:radial-gradient(circle,rgba(226,33,52,.3),transparent);top:50%;right:-8%;animation-delay:-7s}
+.orb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(75,168,235,.35),transparent);bottom:5%;left:30%;animation-delay:-14s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-40px) scale(1.1)}50%{transform:translate(-20px,30px) scale(.95)}75%{transform:translate(40px,20px) scale(1.05)}}
+
+/* ===== DEITY PARALLAX LAYERS ===== */
+.deity-layer{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s ease;background-size:contain;background-repeat:no-repeat;background-position:center;filter:brightness(.4) saturate(1.2)}
+.deity-layer.active{opacity:.15}
+.deity-layer.deity-shiva{background-image:url('shiva.png');filter:brightness(.35) saturate(1.3) hue-rotate(0deg)}
+.deity-layer.deity-krishna{background-image:url('krishna.png');filter:brightness(.35) saturate(1.3) hue-rotate(10deg)}
+.deity-layer.deity-vishnu{background-image:url('vishnu.png');filter:brightness(.35) saturate(1.3) hue-rotate(-10deg)}
+
+/* ===== LIQUID GLASS CARDS ===== */
+.glass-card{background:rgba(14,16,23,.4)!important;backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border:1px solid rgba(255,255,255,.08)!important;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.25,.46,.45,.94),transform .4s ease}
+.glass-card:hover{background:rgba(14,16,23,.55)!important;border-color:rgba(255,255,255,.15)!important;box-shadow:0 8px 32px rgba(0,119,212,.2),inset 0 0 60px rgba(0,119,212,.05);transform:translateY(-8px)!important}
+.glass-shine{position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.03),transparent,rgba(255,255,255,.05),transparent);animation:glassRotate 8s linear infinite;pointer-events:none;z-index:0}
+@keyframes glassRotate{to{transform:rotate(360deg)}}
+.glass-border-glow{position:absolute;inset:-2px;border-radius:18px;background:conic-gradient(from var(--glow-angle,0deg),transparent 40%,rgba(75,168,235,.6) 50%,rgba(226,33,52,.4) 55%,transparent 65%);z-index:-1;opacity:0;transition:opacity .5s;animation:borderGlow 4s linear infinite}
+.glass-card:hover .glass-border-glow{opacity:1}
+@keyframes borderGlow{to{--glow-angle:360deg}}
+@property --glow-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+
+/* ===== SHIMMER TEXT ===== */
+.shimmer-text{position:relative}
+.shimmer-text::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shimmerSweep 3s ease-in-out infinite;pointer-events:none}
+@keyframes shimmerSweep{0%{left:-100%}100%{left:200%}}
+
+/* ===== ENHANCED SKILL ITEMS ===== */
+.skill-item{position:relative;overflow:hidden;transition:all .4s cubic-bezier(.25,.46,.45,.94)!important;cursor:default;backdrop-filter:blur(8px)}
+.skill-item::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);transition:left .6s ease}
+.skill-item:hover::before{left:100%}
+.skill-item:hover{background:rgba(0,119,212,.2)!important;color:var(--text-primary)!important;transform:translateY(-4px) scale(1.05)!important;border-color:rgba(75,168,235,.5)!important;box-shadow:0 4px 20px rgba(0,119,212,.25),0 0 40px rgba(0,119,212,.1)}
+
+/* ===== ENHANCED REVEALS WITH SPRING ===== */
+.reveal{transition:opacity 1s cubic-bezier(.25,.46,.45,.94),transform 1s cubic-bezier(.175,.885,.32,1.275)!important}
+.reveal-left{transition:all 1s cubic-bezier(.175,.885,.32,1.275)!important}
+.reveal-right{transition:all 1s cubic-bezier(.175,.885,.32,1.275)!important}
+
+/* ===== BREATHING TIMELINE DOTS ===== */
+.timeline-dot{animation:breatheGlow 3s ease-in-out infinite}
+@keyframes breatheGlow{0%,100%{box-shadow:0 0 15px var(--accent-glow)}50%{box-shadow:0 0 30px var(--accent-glow),0 0 60px rgba(0,119,212,.2)}}
+
+/* ===== SACRED GEOMETRY DECORATIONS ===== */
+.section::before{content:'';position:absolute;top:50%;right:-100px;width:300px;height:300px;border:1px solid rgba(255,255,255,.03);border-radius:50%;transform:translateY(-50%);pointer-events:none;animation:mandalaRotate 30s linear infinite}
+.section::after{content:'';position:absolute;top:50%;right:-80px;width:260px;height:260px;border:1px solid rgba(0,119,212,.05);border-radius:50%;transform:translateY(-50%);pointer-events:none;animation:mandalaRotate 25s linear infinite reverse}
+@keyframes mandalaRotate{to{transform:translateY(-50%) rotate(360deg)}}
+.connect-section::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(to right,transparent,var(--m-blue),var(--m-red),transparent)}
+
+/* ===== ENHANCED NAVBAR GLASS ===== */
+.navbar.scrolled{background:rgba(10,10,15,.7)!important;backdrop-filter:blur(30px)!important;box-shadow:0 4px 30px rgba(0,0,0,.3)}
+
+/* ===== PROJECT CARD GLOW ===== */
+.project-card{transition:all .5s cubic-bezier(.25,.46,.45,.94)!important}
+.project-card:hover{box-shadow:0 20px 60px rgba(0,119,212,.15),0 0 100px rgba(0,119,212,.05)!important}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--gradient-stripe);z-index:10001;transition:width .1s linear;transform-origin:left}
+
+
+
+/* ===== DEITY SCROLL LAYERS ===== */
+.deity-scroll-layer{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .8s ease}
+.deity-scroll-layer.visible{opacity:1}
+.deity-figure{position:absolute;width:100%;height:100%;background-size:contain;background-repeat:no-repeat;background-position:center;transition:transform 1s ease,opacity .8s ease;opacity:.12;filter:brightness(.5) saturate(1.4)}
+.shiva-figure{background-image:url('/home/aryangadhwal/.gemini/antigravity/brain/a57a9c4d-78ec-4bfc-b7a0-33f488a91187/shiva_cosmic_1778410755381.png');transform:scale(.8) translateX(30%)}
+.krishna-figure{background-image:url('/home/aryangadhwal/.gemini/antigravity/brain/a57a9c4d-78ec-4bfc-b7a0-33f488a91187/krishna_cosmic_1778410770131.png');transform:scale(.8) translateX(-30%)}
+.vishnu-figure{background-image:url('/home/aryangadhwal/.gemini/antigravity/brain/a57a9c4d-78ec-4bfc-b7a0-33f488a91187/vishnu_cosmic_1778410784900.png');transform:scale(.8)}
+.deity-scroll-layer.visible .deity-figure{transform:scale(1) translateX(0)}
+
+
+
+/* ===== SKILL SECTION DIVINE ENTRANCE ===== */
+.skill-category.glass-card.divine-enter{animation:divineReveal 1s cubic-bezier(.175,.885,.32,1.275) forwards}
+@keyframes divineReveal{0%{opacity:0;transform:translateY(60px) scale(.8) rotateX(20deg)}60%{opacity:1;transform:translateY(-10px) scale(1.02) rotateX(-2deg)}100%{opacity:1;transform:translateY(0) scale(1) rotateX(0deg)}}
+
+/* ===== DIVINE AURA PARTICLES ===== */
+.divine-particle{position:fixed;width:4px;height:4px;border-radius:50%;pointer-events:none;z-index:1;animation:floatUp 3s ease-out forwards}
+@keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-200px) scale(0)}}
+
+/* ===== MINIMALIST SIGNATURE PRELOADER ===== */
+.sig-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(75, 168, 235, 0.08), transparent 34%),
+    var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s var(--ease-smooth), filter 1s var(--ease-smooth), visibility 1s var(--ease-smooth);
+  will-change: opacity, filter;
+}
+.sig-preloader.done {
+  opacity: 0;
+  filter: blur(8px);
+  visibility: hidden;
+  pointer-events: none;
+}
+.sig-preloader-inner {
+  text-align: center;
+  position: relative;
+  transform: translateZ(0);
+}
+#sigCanvas {
+  display: block;
+  margin: 0 auto;
+}
+.sig-underline {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  margin: 0.3rem auto 0;
+  border-radius: 1px;
+  opacity: 0;
+  transform: scaleX(0.6);
+  transition:
+    width 0.85s var(--ease-smooth),
+    opacity 0.55s ease,
+    transform 0.85s var(--ease-smooth);
+}
+.sig-underline.expand {
+  width: min(300px, 50vw);
+  opacity: 1;
+  transform: scaleX(1);
+}
