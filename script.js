@@ -287,7 +287,70 @@
                 if (figure)
                     figure.style.transform = `scale(${scale}) translateY(${ty}px)`;
             }
-        });
+        });<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aryan Gadhwal — Full Stack Developer</title>
+  <meta name="description"
+    content="Aryan Gadhwal is a Full Stack Developer specializing in MERN stack, Next.js, and modern web technologies. Explore projects, skills, and experience.">
+  <meta name="keywords" content="Aryan Gadhwal, Full Stack Developer, MERN Stack, Next.js, Portfolio">
+  <meta name="author" content="Aryan Gadhwal">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Minimalist Signature Preloader -->
+  <div class="sig-preloader" id="sigPreloader">
+    <div class="sig-preloader-inner">
+      <canvas id="sigCanvas"></canvas>
+      <div class="sig-underline"></div>
+    </div>
+  </div>
+
+  <!-- Galaxy Canvas Background (fixed, full-page) -->
+  <canvas id="galaxyCanvas"></canvas>
+
+  <!-- Deity Scroll Overlays (cinematic) -->
+  <div class="deity-scroll-layer" id="deityShiva">
+    <div class="deity-figure shiva-figure"></div>
+  </div>
+  <div class="deity-scroll-layer" id="deityKrishna">
+    <div class="deity-figure krishna-figure"></div>
+  </div>
+  <div class="deity-scroll-layer" id="deityVishnu">
+    <div class="deity-figure vishnu-figure"></div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Floating Decorative Orbs -->
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  <div class="floating-orb orb-3"></div>
+
+  <!-- Floating Social Sidebar -->
+  <div class="social-sidebar" id="socialSidebar">
+    <a href="https://github.com/gadhwal-10" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/aryan-gadhwal" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path
+
         // Parallax elements
         document.querySelectorAll('[data-parallax]').forEach(el => {
             const speed = parseFloat(el.dataset.speed ?? '0.1') || 0.1;
@@ -409,119 +472,4 @@
             socialSidebar.style.transition = 'opacity 0.5s ease';
         }
     });
-    // ===== SIGNATURE PRELOADER (Real Handwriting Animation) =====
-    const sigPreloader = document.getElementById('sigPreloader');
-    const sigCanvas = document.getElementById('sigCanvas');
-    if (sigPreloader && sigCanvas) {
-        const preloader = sigPreloader;
-        const ctx = requiredContext(sigCanvas);
-        const dpr = window.devicePixelRatio || 1;
-        const canvasW = Math.min(520, window.innerWidth * 0.88);
-        const S = canvasW / 520;
-        const canvasH = Math.max(115, 145 * S);
-        sigCanvas.width = canvasW * dpr;
-        sigCanvas.height = canvasH * dpr;
-        sigCanvas.style.width = canvasW + 'px';
-        sigCanvas.style.height = canvasH + 'px';
-        ctx.scale(dpr, dpr);
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const writeDuration = prefersReducedMotion ? 600 : 1800;
-        const startDelay = prefersReducedMotion ? 80 : 260;
-        const signatureText = 'Aryan Gadhwal';
-        let fontSize = Math.min(76, Math.max(46, canvasW * 0.145));
-        const baseline = canvasH * 0.62;
-        let textWidth = 0;
-        let textX = 0;
-        let animStart = null;
-        let animDone = false;
-        function easeInOutCubic(t) {
-            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        }
-        function setupSignatureFont() {
-            ctx.font = `600 ${fontSize}px "Dancing Script", cursive`;
-            while (ctx.measureText(signatureText).width > canvasW * 0.9 && fontSize > 34) {
-                fontSize -= 2;
-                ctx.font = `600 ${fontSize}px "Dancing Script", cursive`;
-            }
-            ctx.textAlign = 'left';
-            ctx.textBaseline = 'middle';
-            textWidth = ctx.measureText(signatureText).width;
-            textX = (canvasW - textWidth) / 2;
-        }
-        function drawSignature(reveal, shimmer = 0) {
-            const revealWidth = textWidth * reveal;
-            const gradient = ctx.createLinearGradient(textX, 0, textX + textWidth, 0);
-            gradient.addColorStop(0, 'rgba(245, 248, 255, 0.9)');
-            gradient.addColorStop(0.45, 'rgba(255, 255, 255, 1)');
-            gradient.addColorStop(1, 'rgba(180, 215, 255, 0.92)');
-            ctx.save();
-            ctx.beginPath();
-            ctx.rect(textX - 10, 0, revealWidth + 20, canvasH);
-            ctx.clip();
-            ctx.shadowColor = 'rgba(130, 190, 255, 0.3)';
-            ctx.shadowBlur = 9 * S;
-            ctx.fillStyle = gradient;
-            ctx.fillText(signatureText, textX, baseline);
-            if (shimmer > 0) {
-                const shineX = textX + revealWidth - 22 * S;
-                const shine = ctx.createLinearGradient(shineX, 0, shineX + 44 * S, 0);
-                shine.addColorStop(0, 'transparent');
-                shine.addColorStop(0.5, `rgba(255, 255, 255, ${0.32 * shimmer})`);
-                shine.addColorStop(1, 'transparent');
-                ctx.shadowBlur = 0;
-                ctx.fillStyle = shine;
-                ctx.fillText(signatureText, textX, baseline);
-            }
-            ctx.restore();
-        }
-        function drawRevealTip(reveal, intensity) {
-            const x = textX + textWidth * reveal;
-            const y = baseline - 4 * S;
-            const glow = ctx.createRadialGradient(x, y, 0, x, y, 20 * S);
-            glow.addColorStop(0, `rgba(255, 255, 255, ${0.38 * intensity})`);
-            glow.addColorStop(0.4, `rgba(120, 190, 255, ${0.16 * intensity})`);
-            glow.addColorStop(1, 'transparent');
-            ctx.fillStyle = glow;
-            ctx.beginPath();
-            ctx.arc(x, y, 20 * S, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        function drawFrame(timestamp) {
-            if (!animStart)
-                animStart = timestamp + startDelay;
-            const elapsed = timestamp - animStart;
-            if (elapsed < 0) {
-                ctx.clearRect(0, 0, canvasW, canvasH);
-                drawSignature(0.035, 0.35);
-                requestAnimationFrame(drawFrame);
-                return;
-            }
-            const progress = Math.min(elapsed / writeDuration, 1);
-            const eased = easeInOutCubic(progress);
-            const settle = progress > 0.86 ? (progress - 0.86) / 0.14 : 0;
-            const shimmer = progress < 1 ? 1 - settle : 0;
-            ctx.clearRect(0, 0, canvasW, canvasH);
-            drawSignature(eased, shimmer);
-            if (progress < 1)
-                drawRevealTip(eased, shimmer);
-            if (progress < 1) {
-                requestAnimationFrame(drawFrame);
-            }
-            else if (!animDone) {
-                animDone = true;
-                ctx.clearRect(0, 0, canvasW, canvasH);
-                drawSignature(1, 0);
-                const underline = preloader.querySelector('.sig-underline');
-                if (underline)
-                    underline.classList.add('expand');
-                setTimeout(() => preloader.classList.add('done'), prefersReducedMotion ? 220 : 850);
-                setTimeout(() => preloader.remove(), prefersReducedMotion ? 850 : 1850);
-            }
-        }
-        // Wait for Dancing Script font to load, then start
-        document.fonts.ready.then(() => {
-            setupSignatureFont();
-            requestAnimationFrame(drawFrame);
-        });
-    }
 })();
